@@ -100,7 +100,6 @@
       this.$element.val(this.updater(val)).trigger('change');
       this.$target.val(this.map[val]).trigger('change');
       this.$source.val(this.map[val]).trigger('change');
-      this.$container.addClass('combobox-selected');
       this.selected = true;
       return this.hide();
     }
@@ -216,18 +215,11 @@
     }
 
   , toggle: function () {
-    if (this.$container.hasClass('combobox-selected')) {
-      this.clearTarget();
-      this.triggerChange();
-      this.clearElement();
-    } else {
       if (this.shown) {
         this.hide();
       } else {
-        this.clearElement();
         this.lookup();
       }
-    }
   }
 
   , clearElement: function () {
@@ -394,7 +386,7 @@
   };
 
   $.fn.combobox.defaults = {
-  template: '<div class="combobox-container"><input type="hidden" /><input type="text" autocomplete="off" /><span class="add-on btn dropdown-toggle" data-dropdown="dropdown"><span class="caret"/><span class="combobox-clear"><i class="icon-remove"/></span></span></div>'
+  template: '<div class="combobox-container"><input type="hidden" /><input type="text" autocomplete="on" /><span class="add-on btn dropdown-toggle" data-dropdown="dropdown"><span class="caret"/></span></div>'
   , menu: '<ul class="typeahead typeahead-long dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   };
